@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Navbar: FC = () => {
   return (
-    <div className="w-full p-1 m-0 mx-auto fixed">
-      <div className="mx-auto max-w-3xl border border-gray-300 m-3 rounded-full">
+    <div className="w-full p-2 m-0 mx-auto fixed">
+      <div className="mx-auto bg-white max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-lg">
           <h1 className="text-lg ml-1 flex flex-row items-center">
             🌎 EcoFootprint
@@ -39,7 +39,7 @@ const Navbar: FC = () => {
               leaveTo="transform opacity-0 scale-95"
             >
               <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 shadow-lg ring-1 ring-black/5 focus:outline-none">
-                <div className="px-1 py-1 ">
+                <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
                       <Link to={"/wearelaunchingsoon"}>
@@ -48,7 +48,7 @@ const Navbar: FC = () => {
                             active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2  text-sm`}
                         >
-                          About EdgeGambit
+                          Start The Test
                         </button>
                       </Link>
                     )}
@@ -61,7 +61,7 @@ const Navbar: FC = () => {
                             active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
-                          Blog
+                          Support
                         </button>
                       </Link>
                     )}
@@ -74,22 +74,22 @@ const Navbar: FC = () => {
                             active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
-                          Newsletter
+                          What is a carbon footprint?
                         </button>
                       </Link>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/wearelaunchingsoon"}>
+                      <a href="https://www.ucsusa.org/">
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
-                          Contact
+                          Save the earth
                         </button>
-                      </Link>
+                      </a>
                     )}
                   </Menu.Item>
                 </div>
