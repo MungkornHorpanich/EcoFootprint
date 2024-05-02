@@ -1,4 +1,6 @@
-const CalculatorForm = () => {
+import { FC } from "react";
+
+const CalculatorForm: FC = () => {
   return (
     <div>
       <h1>This is the calculator</h1>
