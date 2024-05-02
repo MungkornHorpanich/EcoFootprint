@@ -6,16 +6,27 @@ const Navbar: FC = () => {
   return (
     <div className="w-full p-1 m-0 mx-auto fixed">
       <div className="mx-auto max-w-3xl border border-gray-300 m-3 rounded-full">
-        <div className="text-black flex flex-row justify-between p-4">
-          <h1 className="text-lg ml-1">🌎 EcoFootprint</h1>
+        <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-lg">
+          <h1 className="text-lg ml-1 flex flex-row items-center">
+            🌎 EcoFootprint
+          </h1>
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="inline-flex w-full justify-center hover:text-green rounded-md px-2 py-1 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-                About us
-                <ChevronDownIcon
-                  className="ml-1 -mr-1 h-5 w-5 mt-1 text-white"
-                  aria-hidden="true"
-                />
+              <Menu.Button className="inline-flex w-full justify-center hover:bg-gray-100 rounded-full px-2 py-2 text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-black/75">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
               </Menu.Button>
             </div>
             <Transition
@@ -27,14 +38,14 @@ const Navbar: FC = () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute  right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-[#1D334D] shadow-lg ring-1 ring-black/5 focus:outline-none">
+              <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 shadow-lg ring-1 ring-black/5 focus:outline-none">
                 <div className="px-1 py-1 ">
                   <Menu.Item>
                     {({ active }) => (
                       <Link to={"/wearelaunchingsoon"}>
                         <button
                           className={`${
-                            active ? "bg-gray-200 text-black" : "text-white"
+                            active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2  text-sm`}
                         >
                           About EdgeGambit
@@ -47,7 +58,7 @@ const Navbar: FC = () => {
                       <Link to={"/wearelaunchingsoon"}>
                         <button
                           className={`${
-                            active ? "bg-gray-200 text-black" : "text-white"
+                            active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
                           Blog
@@ -60,7 +71,7 @@ const Navbar: FC = () => {
                       <Link to={"/wearelaunchingsoon"}>
                         <button
                           className={`${
-                            active ? "bg-gray-200 text-black" : "text-white"
+                            active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
                           Newsletter
@@ -73,7 +84,7 @@ const Navbar: FC = () => {
                       <Link to={"/wearelaunchingsoon"}>
                         <button
                           className={`${
-                            active ? "bg-gray-200 text-black" : "text-white"
+                            active ? "bg-gray-100 text-black" : "text-black"
                           } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                         >
                           Contact
