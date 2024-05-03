@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import CalculatorForm from "./pages/CalculatorForm";
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App: FC = () => {
+const App: React.FC = () => {
   return (
     <>
       <RouterProvider router={router} />

@@ -1,7 +1,7 @@
-import { FC } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 
-const LandingPage: FC = () => {
+const LandingPage: React.FC = () => {
   return (
     <div>
       <Navbar />

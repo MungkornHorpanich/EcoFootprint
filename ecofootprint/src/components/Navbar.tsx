@@ -1,9 +1,9 @@
-import { FC, Fragment } from "react";
+import { React, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { GiFootprint } from "react-icons/gi";
 
-const Navbar: FC = () => {
+const Navbar: React.FC = () => {
   return (
     <div className="w-full py-2 px-3 m-0 mx-auto fixed">
       <div className="mx-auto bg-white max-w-2xl border border-gray-300 m-3 rounded-full">
