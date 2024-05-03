@@ -5,16 +5,15 @@ import { GiFootprint } from "react-icons/gi";
 
 const Navbar: FC = () => {
   return (
-    <div className="w-full z-30 py-2 px-3 m-0 mx-auto fixed">
+    <div className="w-full z-20 py-2 px-3 m-0 mx-auto fixed">
       <div className="mx-auto bg-gray-50 max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-xl">
           <h1 className="text-lg ml-1 flex flex-row items-center">
+            <Link to={"/"} className="flex hover:-rotate-45 transition">
+              <GiFootprint size={25} />
+            </Link>
             <Link to={"/"} className="flex">
-              <GiFootprint
-                size={25}
-                className="hover:-rotate-45 transition-all"
-              />
-              <span className="font-bold pl-1">EcoFootprint</span>
+              <span className="font-bold pl-[2px]">EcoFootprint</span>
             </Link>
           </h1>
           <Menu as="div" className="relative inline-block text-left">

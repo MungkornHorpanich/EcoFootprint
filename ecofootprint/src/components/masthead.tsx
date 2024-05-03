@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Masthead: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div className="min-h-screen z-10 flex flex-col items-center justify-center">
       <video
         autoPlay
         loop
