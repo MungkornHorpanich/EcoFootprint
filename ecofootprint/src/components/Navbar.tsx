@@ -1,11 +1,11 @@
-import { React, Fragment } from "react";
+import { FC, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { GiFootprint } from "react-icons/gi";
 
-const Navbar: React.FC = () => {
+const Navbar: FC = () => {
   return (
-    <div className="w-full py-2 px-3 m-0 mx-auto fixed">
+    <div className="w-full z-20 py-2 px-3 m-0 mx-auto fixed">
       <div className="mx-auto bg-white max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-lg">
           <h1 className="text-lg ml-1 flex flex-row items-center">
