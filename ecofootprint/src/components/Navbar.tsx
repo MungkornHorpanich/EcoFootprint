@@ -1,6 +1,7 @@
 import { FC, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { GiFootprint } from "react-icons/gi";
 
 const Navbar: FC = () => {
   return (
@@ -8,8 +9,11 @@ const Navbar: FC = () => {
       <div className="mx-auto bg-white max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-lg">
           <h1 className="text-lg ml-1 flex flex-row items-center">
-            <Link to={"/"}>
-              <h1>🌎 EcoFootprint</h1>
+            <Link to={"/"} className="flex">
+              <span className="pr-[1px] mt-[-5px] hover:-rotate-45 transition-all flex flex-row items-center">
+                <GiFootprint size={25} />
+              </span>
+              <span className="font-bold">EcoFootprint</span>
             </Link>
           </h1>
           <Menu as="div" className="relative inline-block text-left">
@@ -44,7 +48,7 @@ const Navbar: FC = () => {
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/wearelaunchingsoon"}>
+                      <Link to={"/test"}>
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
@@ -57,7 +61,7 @@ const Navbar: FC = () => {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/wearelaunchingsoon"}>
+                      <Link to={"/support"}>
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
@@ -70,7 +74,7 @@ const Navbar: FC = () => {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/wearelaunchingsoon"}>
+                      <Link to={"/qa"}>
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
