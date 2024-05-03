@@ -8,7 +8,9 @@ const Navbar: FC = () => {
       <div className="mx-auto bg-white max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-lg">
           <h1 className="text-lg ml-1 flex flex-row items-center">
-            🌎 EcoFootprint
+            <Link to={"/"}>
+              <h1>🌎 EcoFootprint</h1>
+            </Link>
           </h1>
           <Menu as="div" className="relative inline-block text-left">
             <div>
