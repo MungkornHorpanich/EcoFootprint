@@ -1,4 +1,5 @@
 import { FC, Fragment } from "react";
+import Link as Scroll from "react-scroll";
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { GiFootprint } from "react-icons/gi";
