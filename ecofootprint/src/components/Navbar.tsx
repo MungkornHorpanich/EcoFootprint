@@ -2,6 +2,7 @@ import { FC, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import { GiFootprint } from "react-icons/gi";
+import { Link as LinkScroll } from "react-scroll";
 
 const Navbar: FC = () => {
   return (
@@ -66,7 +67,14 @@ const Navbar: FC = () => {
                           active ? "bg-gray-100 text-black" : "text-black"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                        FAQ
+                        <LinkScroll
+                          to="faq"
+                          offset={-100}
+                          smooth={true}
+                          spy={true}
+                        >
+                          FAQ
+                        </LinkScroll>
                       </button>
                     )}
                   </Menu.Item>
