@@ -1,8 +1,8 @@
 import { FC, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link as Links } from "react-router-dom";
 import { GiFootprint } from "react-icons/gi";
-import { Link as LinkScroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 const Navbar: FC = () => {
   return (
@@ -10,12 +10,12 @@ const Navbar: FC = () => {
       <div className="mx-auto bg-gray-50 max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-xl">
           <h1 className="text-lg ml-1 flex flex-row items-center">
-            <Link to={"/"} className="flex hover:-rotate-45 transition">
+            <Links to={"/"} className="flex hover:-rotate-45 transition">
               <GiFootprint size={25} />
-            </Link>
-            <Link to={"/"} className="flex">
+            </Links>
+            <Links to={"/"} className="flex">
               <span className="font-bold pl-[2px]">EcoFootprint</span>
-            </Link>
+            </Links>
           </h1>
           <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -49,7 +49,7 @@ const Navbar: FC = () => {
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/test"}>
+                      <Links to={"/test"}>
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
@@ -57,7 +57,7 @@ const Navbar: FC = () => {
                         >
                           Start The Test
                         </button>
-                      </Link>
+                      </Links>
                     )}
                   </Menu.Item>
                   <Menu.Item>
@@ -67,20 +67,21 @@ const Navbar: FC = () => {
                           active ? "bg-gray-100 text-black" : "text-black"
                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
-                        <LinkScroll
+                        <Link
+                          className="w-full flex items-start"
                           to="faq"
-                          offset={-100}
-                          smooth={true}
                           spy={true}
+                          offset={50}
+                          smooth={true}
                         >
                           FAQ
-                        </LinkScroll>
+                        </Link>
                       </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link to={"/support"}>
+                      <Links to={"/support"}>
                         <button
                           className={`${
                             active ? "bg-gray-100 text-black" : "text-black"
@@ -88,7 +89,7 @@ const Navbar: FC = () => {
                         >
                           Support
                         </button>
-                      </Link>
+                      </Links>
                     )}
                   </Menu.Item>
                   <Menu.Item>
