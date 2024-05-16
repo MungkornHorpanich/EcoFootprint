@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Masthead from "../components/masthead";
 import Faq from "../components/Faq";
-import Footer from "../components/Footer";
 import Video from "../components/Video";
+import Footer from "../components/Footer";
 import { PropagateLoader } from "react-spinners";
 import Support from "../components/Support";
 

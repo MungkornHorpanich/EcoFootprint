@@ -49,15 +49,21 @@ const Navbar: FC = () => {
                 <div className="px-1 py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <Links to={"/test"}>
-                        <button
-                          className={`${
-                            active ? "bg-gray-100 text-black" : "text-black"
-                          } group flex w-full items-center rounded-md px-2 py-2  text-sm`}
+                      <button
+                        className={`${
+                          active ? "bg-gray-100 text-black" : "text-black"
+                        } group flex w-full items-center rounded-md px-2 py-2  text-sm`}
+                      >
+                        <Link
+                          className="w-full flex items-start"
+                          to="start"
+                          spy={true}
+                          offset={50}
+                          smooth={true}
                         >
                           Start The Test
-                        </button>
-                      </Links>
+                        </Link>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
@@ -81,15 +87,21 @@ const Navbar: FC = () => {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Links to={"/support"}>
-                        <button
-                          className={`${
-                            active ? "bg-gray-100 text-black" : "text-black"
-                          } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      <button
+                        className={`${
+                          active ? "bg-gray-100 text-black" : "text-black"
+                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                      >
+                        <Link
+                          className="w-full flex items-start"
+                          to="support"
+                          spy={true}
+                          offset={50}
+                          smooth={true}
                         >
                           Support
-                        </button>
-                      </Links>
+                        </Link>
+                      </button>
                     )}
                   </Menu.Item>
                   <Menu.Item>
