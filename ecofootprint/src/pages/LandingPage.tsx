@@ -4,6 +4,8 @@ import Masthead from "../components/masthead";
 import Faq from "../components/Faq";
 import Footer from "../components/Footer";
 import Video from "../components/Video";
+import { PropagateLoader } from "react-spinners";
+import Support from "../components/Support";
 
 const LandingPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -12,19 +14,22 @@ const LandingPage: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 2500);
   }, []);
 
   return (
     <div>
       {loading ? (
-        "loading"
+        <div className="w-screen flex justify-center items-center h-screen bg-[#0f1e2f]">
+          <PropagateLoader color={"#6EB0A6"} />
+        </div>
       ) : (
         <div>
           <Navbar />
           <Masthead />
           <Video />
           <Faq />
+          <Support />
           <Footer />
         </div>
       )}

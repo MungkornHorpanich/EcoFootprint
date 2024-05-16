@@ -1,0 +1,11 @@
+import React from "react";
+
+const test: React.FC = () => {
+  return (
+    <div>
+      <div></div>
+    </div>
+  );
+};
+
+export default test;
