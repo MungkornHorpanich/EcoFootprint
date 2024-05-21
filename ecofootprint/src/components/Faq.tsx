@@ -4,7 +4,7 @@ import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
 const Faq: React.FC = () => {
   return (
-    <div id="faq" className="w-full bg-gray-50 ">
+    <div id="faq" className="w-full bg-gray-50 polka">
       <div className="py-24 max-w-2xl mx-auto">
         <h1 className="text-3xl drop-shadow-lg px-2 font-bold">
           Frequently Asked Questions (FAQ)

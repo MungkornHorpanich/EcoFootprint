@@ -12,11 +12,17 @@ const Video: React.FC = () => {
           <p className="text-xl text-center items-center pt-1 drop-shadow-lg px-2 pb-4 font-bold">
             Don't know how much waste you generated? Start the test now!
           </p>
-          <Link to={"/test"}>
-            <button className="px-7 flex mx-auto font-semibold text-white rounded-xl bg-nature text-xl py-4">
-              Start The Test
-            </button>
-          </Link>
+          <div className="flex">
+            <div className="flex gap-5 mx-auto">
+              <h1 className="text-6xl animate-bounce">👉</h1>
+              <Link to={"/test"}>
+                <button className="px-7 flex font-semibold text-white rounded-xl bg-nature text-xl py-4">
+                  Start The Test
+                </button>
+              </Link>
+              <h1 className="text-6xl animate-bounce">👈</h1>
+            </div>
+          </div>
         </div>
       </div>
     </div>

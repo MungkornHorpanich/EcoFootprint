@@ -54,15 +54,9 @@ const Navbar: FC = () => {
                           active ? "bg-gray-100 text-black" : "text-black"
                         } group flex w-full items-center rounded-md px-2 py-2  text-sm`}
                       >
-                        <Link
-                          className="w-full flex items-start"
-                          to="start"
-                          spy={true}
-                          offset={50}
-                          smooth={true}
-                        >
+                        <Links className="w-full text-left" to={"/test"}>
                           Start The Test
-                        </Link>
+                        </Links>
                       </button>
                     )}
                   </Menu.Item>

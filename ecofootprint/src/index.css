@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Use these custom variables... */
+:root {
+  --polka-bg-image: radial-gradient(rgb(0, 0, 0) 10%, transparent 10%),
+    radial-gradient(rgb(0, 0, 0) 10%, transparent 10%);
+  --polka-bg-position: 0px 0px, 4px 4px;
+  --polka-bg-size: 8px 8px;
+  --polka-bg-color: rgb(255, 255, 255);
+}
+
+/* ...or add this class to an element */
+.polka {
+  background-image: radial-gradient(rgb(0, 0, 0) 10%, transparent 10%),
+    radial-gradient(rgb(0, 0, 0) 10%, transparent 10%);
+  background-position:
+    0px 0px,
+    4px 4px;
+  background-size: 8px 8px;
+  background-color: rgb(255, 255, 255);
+}

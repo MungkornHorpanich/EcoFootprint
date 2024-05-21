@@ -3,7 +3,7 @@ import { FaTwitter, FaDiscord } from "react-icons/fa";
 
 const Support: React.FC = () => {
   return (
-    <div id="support" className="py-24 bg-gray-50 mx-1 ">
+    <div id="support" className="py-24 bg-gray-50 mx-1">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl drop-shadow-lg px-2 font-bold">Support</h1>
         <p className="font-bold pl-3">
