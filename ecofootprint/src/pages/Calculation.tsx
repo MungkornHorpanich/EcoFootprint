@@ -12,13 +12,13 @@ const Calculation: React.FC = () => {
     restDelta: 0.001,
   });
 
-  const plans = [
+  const q1 = [
     { name: "Startup", ram: "12GB", cpus: "6 CPUs", disk: "256GB SSD disk" },
     { name: "Business", ram: "16GB", cpus: "8 CPUs", disk: "512GB SSD disk" },
     { name: "Enterprise", ram: "32GB", cpus: "12 CPUs", disk: "1TB SSD disk" },
   ];
 
-  const [selected, setSelected] = useState(plans[0]);
+  const [selected, setSelected] = useState(q1[0]);
 
   return (
     <div className="py-12 w-screen">
@@ -46,7 +46,7 @@ const Calculation: React.FC = () => {
             aria-label="Server size"
             className="space-y-2"
           >
-            {plans.map((plan) => (
+            {q1.map((plan) => (
               <Radio
                 key={plan.name}
                 value={plan}
