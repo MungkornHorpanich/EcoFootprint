@@ -1,7 +1,7 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 const Calculation: React.FC = () => {
@@ -13,15 +13,66 @@ const Calculation: React.FC = () => {
   });
 
   const q1 = [
-    { name: "Startup", ram: "12GB", cpus: "6 CPUs", disk: "256GB SSD disk" },
-    { name: "Business", ram: "16GB", cpus: "8 CPUs", disk: "512GB SSD disk" },
-    { name: "Enterprise", ram: "32GB", cpus: "12 CPUs", disk: "1TB SSD disk" },
+    { name: "Yes, I do.", footprint: 4.6 },
+    { name: "Yes, I do but It's an electric car.", footprint: 0.4 },
+    { name: "No, I don't", footprint: 0.0 },
   ];
 
-  const [selected, setSelected] = useState(q1[0]);
+  const q2 = [
+    { name: "4 Short-haul roundtrips.", footprint: 1.9 },
+    { name: "12 Short-hual roundtrips.", footprint: 5.5 },
+    { name: "1 Long-hual roundtrips.", footprint: 2.35 },
+  ];
+
+  const q3 = [
+    { name: "Yes, I'm vegetarion.", footprint: -1.4 },
+    { name: "Yes, I'm vegan.", footprint: -1.6 },
+    { name: "I don't eat red meat.", footprint: -0.9 },
+  ];
+
+  const q4 = [
+    { name: "Yes, I have a cat", footprint: 0.3 },
+    { name: "Yes, I have a dog", footprint: 0.8 },
+    { name: "Yes, I have a large dog", footprint: 2.5 },
+    { name: "No, I don't", footprint: 0.0 },
+  ];
+
+  const q5 = [
+    { name: "Yes, I do." },
+    { name: "Yes, I do but It's an electric car." },
+    { name: "No, I don't" },
+  ];
+
+  const q6 = [
+    { name: "Yes, I do." },
+    { name: "Yes, I do but It's an electric car." },
+    { name: "No, I don't" },
+  ];
+
+  // Q1
+  const [selected1, setSelected1] = useState(q1[0]);
+  const footprint1 = selected1.footprint;
+
+  // Q2
+  const [selected2, setSelected2] = useState(q2[0]);
+  const footprint2 = selected2.footprint;
+
+  // Q3
+  const [selected3, setSelected3] = useState(q3[0]);
+  const footprint3 = selected3.footprint;
+
+  // Q4
+  const [selected4, setSelected4] = useState(q4[0]);
+  const footprint4 = selected4.footprint;
+
+  useEffect(() => {
+    let sum = footprint1 + footprint2 + footprint3 + footprint4;
+    console.log(sum.toFixed(2));
+    console.log("-----------------------");
+  }, [selected1, selected2, selected3, selected4]);
 
   return (
-    <div className="py-12 w-screen">
+    <div className="py-12 w-screen px-3">
       <motion.div
         className="z-100 fixed top-0 left-0 right-0 h-[10px] m-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 origin-left"
         style={{ scaleX }}
@@ -41,29 +92,104 @@ const Calculation: React.FC = () => {
           <h1 className="font-bold text-2xl">1) Do you have a car?</h1>
           <RadioGroup
             by="name"
-            value={selected}
-            onChange={setSelected}
+            value={selected1}
+            onChange={setSelected1}
             aria-label="Server size"
-            className="space-y-2"
+            className="space-y-2 mt-2"
           >
             {q1.map((plan) => (
               <Radio
                 key={plan.name}
                 value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-white/5 py-4 px-5 text-white shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
               >
                 <div className="flex w-full items-center justify-between">
-                  <div className="text-sm/6">
-                    <p className="font-semibold text-white">{plan.name}</p>
-                    <div className="flex gap-2 text-white/50">
-                      <div>{plan.ram}</div>
-                      <div aria-hidden="true">&middot;</div>
-                      <div>{plan.cpus}</div>
-                      <div aria-hidden="true">&middot;</div>
-                      <div>{plan.disk}</div>
-                    </div>
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
                   </div>
-                  <CheckCircleIcon className="size-6 fill-white opacity-0 transition group-data-[checked]:opacity-100" />
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q2">
+          <h1 className="font-bold text-2xl">
+            2) How many flight how you got in 1 year?
+          </h1>
+          <RadioGroup
+            by="name"
+            value={selected2}
+            onChange={setSelected2}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q2.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q3">
+          <h1 className="font-bold text-2xl">
+            3) Are you vegan or vegetarion?
+          </h1>
+          <RadioGroup
+            by="name"
+            value={selected3}
+            onChange={setSelected3}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q3.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q4">
+          <h1 className="font-bold text-2xl">4) Do you have a pet?</h1>
+          <RadioGroup
+            by="name"
+            value={selected4}
+            onChange={setSelected4}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q4.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                 </div>
               </Radio>
             ))}
