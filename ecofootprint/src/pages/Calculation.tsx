@@ -101,7 +101,7 @@ const Calculation: React.FC = () => {
         style={{ scaleX }}
       />
       <div className="fixed right-0 bottom-0 m-5 py-4 px-8">
-        {csum.toFixed(2)}
+        {csum.toFixed(3)}
       </div>
       <div className="flex flex-col max-w-2xl gap-24 mx-auto mt-12">
         <div id="heading">
