@@ -3,6 +3,7 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const Calculation: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -15,6 +16,7 @@ const Calculation: React.FC = () => {
   const q1 = [
     { name: "Yes, I do.", footprint: 4.6 },
     { name: "Yes, I do but It's an electric car.", footprint: 0.4 },
+    { name: "Yes, I do but It's a motorbike", footprint: 0.98 },
     { name: "No, I don't", footprint: 0.0 },
   ];
 
@@ -38,9 +40,9 @@ const Calculation: React.FC = () => {
   ];
 
   const q5 = [
-    { name: "Yes, I do." },
-    { name: "Yes, I do but It's an electric car." },
-    { name: "No, I don't" },
+    { name: "A little (13$ a month)", footprint: -0.5 },
+    { name: "Average (50$ a month)", footprint: 0.0 },
+    { name: "A lot (120$ a month)", footprint: 1 },
   ];
 
   const q6 = [
@@ -65,11 +67,15 @@ const Calculation: React.FC = () => {
   const [selected4, setSelected4] = useState(q4[0]);
   const footprint4 = selected4.footprint;
 
+  // Q5
+  const [selected5, setSelected5] = useState(q5[0]);
+  const footprint5 = selected5.footprint;
+
   useEffect(() => {
-    let sum = footprint1 + footprint2 + footprint3 + footprint4;
+    let sum = footprint1 + footprint2 + footprint3 + footprint4 + footprint5;
     console.log(sum.toFixed(2));
     console.log("-----------------------");
-  }, [selected1, selected2, selected3, selected4]);
+  }, [selected1, selected2, selected3, selected4, selected5]);
 
   return (
     <div className="py-12 w-screen px-3">
@@ -180,6 +186,34 @@ const Calculation: React.FC = () => {
             className="space-y-2 mt-2"
           >
             {q4.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q5">
+          <h1 className="font-bold text-2xl">
+            How much do you spend on clothes each month?
+          </h1>
+          <RadioGroup
+            by="name"
+            value={selected5}
+            onChange={setSelected5}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q5.map((plan) => (
               <Radio
                 key={plan.name}
                 value={plan}
