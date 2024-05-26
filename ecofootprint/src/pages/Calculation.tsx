@@ -3,7 +3,6 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import React from "react";
-import Navbar from "../components/Navbar";
 
 const Calculation: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -30,6 +29,7 @@ const Calculation: React.FC = () => {
     { name: "Yes, I'm vegetarion.", footprint: -1.4 },
     { name: "Yes, I'm vegan.", footprint: -1.6 },
     { name: "I don't eat red meat.", footprint: -0.9 },
+    { name: "No, I'm not", footprint: 1.2 },
   ];
 
   const q4 = [
@@ -46,9 +46,15 @@ const Calculation: React.FC = () => {
   ];
 
   const q6 = [
-    { name: "Yes, I do." },
-    { name: "Yes, I do but It's an electric car." },
-    { name: "No, I don't" },
+    { name: "Yes, I do but not alot.", footprint: -0.25 },
+    { name: "Yes, I do but alot.", footprint: -0.5 },
+    { name: "No, I don't", footprint: 0.4 },
+  ];
+
+  const q7 = [
+    { name: "A little (50$ a month)", footprint: -0.5 },
+    { name: "Average (200$ a month)", footprint: 0.0 },
+    { name: "A lot (500$ a month)", footprint: 0.5 },
   ];
 
   // Q1
@@ -71,11 +77,39 @@ const Calculation: React.FC = () => {
   const [selected5, setSelected5] = useState(q5[0]);
   const footprint5 = selected5.footprint;
 
+  // Q6
+  const [selected6, setSelected6] = useState(q6[0]);
+  const footprint6 = selected6.footprint;
+
+  // Q7
+  const [selected7, setSelected7] = useState(q7[0]);
+  const footprint7 = selected7.footprint;
+
+  const [csum, setCsum] = useState<number | any>(null);
+
   useEffect(() => {
-    let sum = footprint1 + footprint2 + footprint3 + footprint4 + footprint5;
+    let sum =
+      footprint1 +
+      footprint2 +
+      footprint3 +
+      footprint4 +
+      footprint5 +
+      footprint6 +
+      footprint7;
+    setCsum(sum);
+    console.log("let ---------------------");
     console.log(sum.toFixed(2));
-    console.log("-----------------------");
-  }, [selected1, selected2, selected3, selected4, selected5]);
+    console.log("state ---------------------");
+    console.log(csum);
+  }, [
+    selected1,
+    selected2,
+    selected3,
+    selected4,
+    selected5,
+    selected6,
+    selected7,
+  ]);
 
   return (
     <div className="py-12 w-screen px-3">
@@ -95,7 +129,7 @@ const Calculation: React.FC = () => {
         </div>
 
         <div id="q1">
-          <h1 className="font-bold text-2xl">1) Do you have a car?</h1>
+          <h1 className="font-bold text-2xl">1) Do you have a car? 🚗</h1>
           <RadioGroup
             by="name"
             value={selected1}
@@ -122,7 +156,7 @@ const Calculation: React.FC = () => {
 
         <div id="q2">
           <h1 className="font-bold text-2xl">
-            2) How many flight how you got in 1 year?
+            2) How many flight how you got in 1 year? ✈️
           </h1>
           <RadioGroup
             by="name"
@@ -150,7 +184,7 @@ const Calculation: React.FC = () => {
 
         <div id="q3">
           <h1 className="font-bold text-2xl">
-            3) Are you vegan or vegetarion?
+            3) Are you vegan or vegetarion? 🥦
           </h1>
           <RadioGroup
             by="name"
@@ -177,7 +211,7 @@ const Calculation: React.FC = () => {
         </div>
 
         <div id="q4">
-          <h1 className="font-bold text-2xl">4) Do you have a pet?</h1>
+          <h1 className="font-bold text-2xl">4) Do you have a pet? 🐶</h1>
           <RadioGroup
             by="name"
             value={selected4}
@@ -204,7 +238,7 @@ const Calculation: React.FC = () => {
 
         <div id="q5">
           <h1 className="font-bold text-2xl">
-            How much do you spend on clothes each month?
+            5) How much do you spend on clothes each month? 👕
           </h1>
           <RadioGroup
             by="name"
@@ -214,6 +248,67 @@ const Calculation: React.FC = () => {
             className="space-y-2 mt-2"
           >
             {q5.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q6">
+          <h1 className="font-bold text-2xl">
+            6) Do you have a solar cell? 🔋
+          </h1>
+          <RadioGroup
+            by="name"
+            value={selected6}
+            onChange={setSelected6}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q6.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q7">
+          <h1 className="font-bold text-2xl">
+            7) How much do you spend on services per month? 📱
+          </h1>
+          <p className="tracking-tighter">
+            Services include health insurance, phone bills, subscriptions,
+            hiring an accountant, etc. Paying a company or someone to do
+            something for you falls under this category.
+          </p>
+          <RadioGroup
+            by="name"
+            value={selected7}
+            onChange={setSelected7}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q7.map((plan) => (
               <Radio
                 key={plan.name}
                 value={plan}
