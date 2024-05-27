@@ -12,10 +12,10 @@ const Calculation: React.FC = () => {
     restDelta: 0.001,
   });
   const q1 = [
+    { name: "No, I don't", footprint: 0.0 },
     { name: "Yes, I do.", footprint: 4.6 },
     { name: "Yes, I do but It's an electric car.", footprint: 0.4 },
     { name: "Yes, I do but It's a motorbike", footprint: 0.98 },
-    { name: "No, I don't", footprint: 0.0 },
   ];
 
   const q2 = [
@@ -25,17 +25,17 @@ const Calculation: React.FC = () => {
   ];
 
   const q3 = [
+    { name: "No, I'm not", footprint: 1.2 },
     { name: "Yes, I'm vegetarian.", footprint: -1.4 },
     { name: "Yes, I'm vegan.", footprint: -1.6 },
     { name: "I don't eat red meat.", footprint: -0.9 },
-    { name: "No, I'm not", footprint: 1.2 },
   ];
 
   const q4 = [
+    { name: "No, I don't", footprint: 0.0 },
     { name: "Yes, I have a cat", footprint: 0.3 },
     { name: "Yes, I have a dog", footprint: 0.8 },
     { name: "Yes, I have a large dog", footprint: 2.5 },
-    { name: "No, I don't", footprint: 0.0 },
   ];
 
   const q5 = [
@@ -45,15 +45,21 @@ const Calculation: React.FC = () => {
   ];
 
   const q6 = [
+    { name: "No, I don't", footprint: 0.4 },
     { name: "Yes, I do but not a lot.", footprint: -0.25 },
     { name: "Yes, I do but a lot.", footprint: -0.5 },
-    { name: "No, I don't", footprint: 0.4 },
   ];
 
   const q7 = [
     { name: "A little (50$ a month)", footprint: -0.5 },
     { name: "Average (200$ a month)", footprint: 0.0 },
     { name: "A lot (500$ a month)", footprint: 0.5 },
+  ];
+
+  const q8 = [
+    { name: "A little (135.5 liters daily)", footprint: 0.2 },
+    { name: "Average (255 liters daily)", footprint: 0.3 },
+    { name: "A lot (417 liters daily)", footprint: 0.5 },
   ];
 
   const [selected1, setSelected1] = useState(q1[0]);
@@ -63,6 +69,7 @@ const Calculation: React.FC = () => {
   const [selected5, setSelected5] = useState(q5[0]);
   const [selected6, setSelected6] = useState(q6[0]);
   const [selected7, setSelected7] = useState(q7[0]);
+  const [selected8, setSelected8] = useState(q8[0]);
 
   useEffect(() => {
     const sum =
@@ -72,7 +79,8 @@ const Calculation: React.FC = () => {
       selected4.footprint +
       selected5.footprint +
       selected6.footprint +
-      selected7.footprint;
+      selected7.footprint +
+      selected8.footprint;
     setCsum(sum);
   }, [
     selected1,
@@ -82,6 +90,7 @@ const Calculation: React.FC = () => {
     selected5,
     selected6,
     selected7,
+    selected8,
   ]);
 
   const [csum, setCsum] = useState<number>(
@@ -91,7 +100,8 @@ const Calculation: React.FC = () => {
       selected4.footprint +
       selected5.footprint +
       selected6.footprint +
-      selected7.footprint,
+      selected7.footprint +
+      selected8.footprint,
   );
 
   return (
@@ -295,6 +305,34 @@ const Calculation: React.FC = () => {
             className="space-y-2 mt-2"
           >
             {q7.map((plan) => (
+              <Radio
+                key={plan.name}
+                value={plan}
+                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+              >
+                <div className="flex w-full items-center justify-between">
+                  <div className="text-md/6">
+                    <p className="font-semibold text-black">{plan.name}</p>
+                  </div>
+                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
+                </div>
+              </Radio>
+            ))}
+          </RadioGroup>
+        </div>
+
+        <div id="q8">
+          <h1 className="font-bold text-2xl">
+            7) How much water do you use? 💧
+          </h1>
+          <RadioGroup
+            by="name"
+            value={selected8}
+            onChange={setSelected8}
+            aria-label="Server size"
+            className="space-y-2 mt-2"
+          >
+            {q8.map((plan) => (
               <Radio
                 key={plan.name}
                 value={plan}
