@@ -6,9 +6,6 @@ export default {
       colors: {
         nature: "#41B06E",
       },
-      backgroundImage: {
-        dot: 'url("")',
-      },
     },
   },
   plugins: [],
