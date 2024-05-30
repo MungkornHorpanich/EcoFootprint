@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 
 const Navbar: FC = () => {
   return (
-    <div className="w-full z-20 py-2 px-3 m-0 mx-auto fixed">
+    <div className="w-full z-20 py-2 px-3 m-0  mx-auto fixed">
       <div className="mx-auto bg-gray-50 max-w-2xl border border-gray-300 m-3 rounded-full">
         <div className="text-black flex flex-row justify-between px-4 py-3 rounded-full shadow-xl">
           <h1 className="text-lg ml-1 flex flex-row items-center">

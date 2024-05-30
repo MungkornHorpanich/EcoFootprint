@@ -3,6 +3,7 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import React from "react";
+import Navbar from "../components/Navbar";
 
 const Calculation: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -15,12 +16,12 @@ const Calculation: React.FC = () => {
   const q1 = [
     { name: "No, I don't", footprint: 0.0 },
     { name: "Yes, I do.", footprint: 4.6 },
-    { name: "Yes, I do but It's an electric car.", footprint: 0.4 },
-    { name: "Yes, I do but It's a motorbike", footprint: 0.98 },
+    { name: "Yes, I do but It's an electric car.", footprint: 0.5 },
+    { name: "Yes, I do but It's a motorbike", footprint: 1 },
   ];
 
   const q2 = [
-    { name: "4 Short-haul roundtrips.", footprint: 1.9 },
+    { name: "4 Short-haul roundtrips.", footprint: 2.0 },
     { name: "12 Short-haul roundtrips.", footprint: 5.5 },
     { name: "1 Long-haul roundtrips.", footprint: 2.35 },
   ];
@@ -34,14 +35,14 @@ const Calculation: React.FC = () => {
 
   const q4 = [
     { name: "No, I don't", footprint: 0.0 },
-    { name: "Yes, I have a cat", footprint: 0.3 },
-    { name: "Yes, I have a dog", footprint: 0.8 },
+    { name: "Yes, I have a cat", footprint: 0.5 },
+    { name: "Yes, I have a dog", footprint: 1.2 },
     { name: "Yes, I have a large dog", footprint: 2.5 },
   ];
 
   const q5 = [
-    { name: "A little (13$ a month)", footprint: -0.5 },
-    { name: "Average (50$ a month)", footprint: 0.0 },
+    { name: "A little (13$ a month)", footprint: -0.25 },
+    { name: "Average (50$ a month)", footprint: 0.5 },
     { name: "A lot (120$ a month)", footprint: 1 },
   ];
 
@@ -53,7 +54,7 @@ const Calculation: React.FC = () => {
 
   const q7 = [
     { name: "A little (50$ a month)", footprint: -0.5 },
-    { name: "Average (200$ a month)", footprint: 0.0 },
+    { name: "Average (200$ a month)", footprint: 0.25 },
     { name: "A lot (500$ a month)", footprint: 0.5 },
   ];
 
@@ -364,8 +365,27 @@ const Calculation: React.FC = () => {
   }
   if (done === true) {
     return (
-      <div>
-        <div>{`Your carbon footprint is: ${csum.toFixed(2)}`}</div>
+      <div className="py-12 w-screen px-3">
+        <div className="flex flex-col max-w-2xl mx-auto">
+          <p className="font-semibold">
+            <button
+              onClick={() => {
+                setDone(false);
+              }}
+            >
+              ⬅️ Back
+            </button>
+          </p>
+          <div className="py-12 mt-12 mx-auto items-center text-center text-2xl font-semibold rounded-xl bg-gray-100 w-full">
+            <p>{`Your carbon footprint is ${csum.toFixed(2)} tons of CO₂`}</p>
+            <p>{`Here's what that means!`}</p>
+          </div>
+          <img
+            src="https://projectwren.imgix.net/earth-incomplete-puzzle-clean.png?auto=format%2Ccompress&q=35"
+            alt="globe"
+            className="size-48 mx-auto mt-12"
+          />
+        </div>
       </div>
     );
   }

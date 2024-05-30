@@ -10,7 +10,7 @@ const Masthead: React.FC = () => {
         loop
         muted
         playsInline
-        className="absolute w-full h-full object-cover"
+        className="absolute w-screen h-screen object-cover"
         src={videoBackground}
       />
 
