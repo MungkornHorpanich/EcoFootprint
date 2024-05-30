@@ -6,6 +6,7 @@ import React from "react";
 
 const Calculation: React.FC = () => {
   const { scrollYProgress } = useScroll();
+  const [done, setDone] = useState<boolean>(false);
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -104,250 +105,270 @@ const Calculation: React.FC = () => {
       selected8.footprint,
   );
 
-  return (
-    <div className="py-12 w-screen px-3">
-      <motion.div
-        className="z-100 fixed top-0 left-0 right-0 h-[10px] m-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 origin-left"
-        style={{ scaleX }}
-      />
-      <div className="flex flex-col max-w-2xl gap-24 mx-auto mt-12">
-        <div id="heading">
-          <h1 className="font-bold text-3xl">
-            Let's start calculating your Carbon Footprint!
-          </h1>
-          <p className="font-semibold text-lg tracking-tight">
-            Please answer the question honestly for the best and more accurate
-            result.
-          </p>
-        </div>
+  if (done === false) {
+    return (
+      <div className="py-12 w-screen px-3">
+        <motion.div
+          className="z-100 fixed top-0 left-0 right-0 h-[10px] m-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 origin-left"
+          style={{ scaleX }}
+        />
+        <div className="fixed right-0 bottom-0 m-5">{`Your carbon footprint: ${csum.toFixed(
+          2,
+        )}`}</div>
+        <div className="flex flex-col max-w-2xl gap-24 mx-auto mt-12">
+          <div id="heading">
+            <h1 className="font-bold text-3xl">
+              Let's start calculating your Carbon Footprint!
+            </h1>
+            <p className="font-semibold text-lg tracking-tight">
+              Please answer the question honestly for the best and more accurate
+              result.
+            </p>
+          </div>
 
-        <div id="q1">
-          <h1 className="font-bold text-2xl">1) Do you have a car? 🚗</h1>
-          <RadioGroup
-            by="name"
-            value={selected1}
-            onChange={setSelected1}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q1.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q1">
+            <h1 className="font-bold text-2xl">1) Do you have a car? 🚗</h1>
+            <RadioGroup
+              by="name"
+              value={selected1}
+              onChange={setSelected1}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q1.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q2">
-          <h1 className="font-bold text-2xl">
-            2) How many flight how you got in 1 year? ✈️
-          </h1>
-          <RadioGroup
-            by="name"
-            value={selected2}
-            onChange={setSelected2}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q2.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q2">
+            <h1 className="font-bold text-2xl">
+              2) How many flight how you got in 1 year? ✈️
+            </h1>
+            <RadioGroup
+              by="name"
+              value={selected2}
+              onChange={setSelected2}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q2.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q3">
-          <h1 className="font-bold text-2xl">
-            3) Are you vegan or vegetarion? 🥦
-          </h1>
-          <RadioGroup
-            by="name"
-            value={selected3}
-            onChange={setSelected3}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q3.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q3">
+            <h1 className="font-bold text-2xl">
+              3) Are you vegan or vegetarion? 🥦
+            </h1>
+            <RadioGroup
+              by="name"
+              value={selected3}
+              onChange={setSelected3}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q3.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q4">
-          <h1 className="font-bold text-2xl">4) Do you have a pet? 🐶</h1>
-          <RadioGroup
-            by="name"
-            value={selected4}
-            onChange={setSelected4}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q4.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q4">
+            <h1 className="font-bold text-2xl">4) Do you have a pet? 🐶</h1>
+            <RadioGroup
+              by="name"
+              value={selected4}
+              onChange={setSelected4}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q4.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q5">
-          <h1 className="font-bold text-2xl">
-            5) How much do you spend on clothes each month? 👕
-          </h1>
-          <RadioGroup
-            by="name"
-            value={selected5}
-            onChange={setSelected5}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q5.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q5">
+            <h1 className="font-bold text-2xl">
+              5) How much do you spend on clothes each month? 👕
+            </h1>
+            <RadioGroup
+              by="name"
+              value={selected5}
+              onChange={setSelected5}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q5.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q6">
-          <h1 className="font-bold text-2xl">
-            6) Do you have a solar cell? 🔋
-          </h1>
-          <RadioGroup
-            by="name"
-            value={selected6}
-            onChange={setSelected6}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q6.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q6">
+            <h1 className="font-bold text-2xl">
+              6) Do you have a solar cell? 🔋
+            </h1>
+            <RadioGroup
+              by="name"
+              value={selected6}
+              onChange={setSelected6}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q6.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q7">
-          <h1 className="font-bold text-2xl">
-            7) How much do you spend on services per month? 📱
-          </h1>
-          <p className="tracking-tighter">
-            Services include health insurance, phone bills, subscriptions,
-            hiring an accountant, etc. Paying a company or someone to do
-            something for you falls under this category.
-          </p>
-          <RadioGroup
-            by="name"
-            value={selected7}
-            onChange={setSelected7}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q7.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q7">
+            <h1 className="font-bold text-2xl">
+              7) How much do you spend on services per month? 📱
+            </h1>
+            <p className="tracking-tighter">
+              Services include health insurance, phone bills, subscriptions,
+              hiring an accountant, etc. Paying a company or someone to do
+              something for you falls under this category.
+            </p>
+            <RadioGroup
+              by="name"
+              value={selected7}
+              onChange={setSelected7}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q7.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </div>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
 
-        <div id="q8">
-          <h1 className="font-bold text-2xl">
-            7) How much water do you use? 💧
-          </h1>
-          <RadioGroup
-            by="name"
-            value={selected8}
-            onChange={setSelected8}
-            aria-label="Server size"
-            className="space-y-2 mt-2"
-          >
-            {q8.map((plan) => (
-              <Radio
-                key={plan.name}
-                value={plan}
-                className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
-              >
-                <div className="flex w-full items-center justify-between">
-                  <div className="text-md/6">
-                    <p className="font-semibold text-black">{plan.name}</p>
+          <div id="q8">
+            <h1 className="font-bold text-2xl">
+              7) How much water do you use? 💧
+            </h1>
+            <RadioGroup
+              by="name"
+              value={selected8}
+              onChange={setSelected8}
+              aria-label="Server size"
+              className="space-y-2 mt-2"
+            >
+              {q8.map((plan) => (
+                <Radio
+                  key={plan.name}
+                  value={plan}
+                  className="group relative flex cursor-pointer rounded-lg bg-gray-50/5 py-4 px-5 text-black shadow-md transition focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-gray-500/10"
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <div className="text-md/6">
+                      <p className="font-semibold text-black">{plan.name}</p>
+                    </div>
+                    <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
                   </div>
-                  <CheckCircleIcon className="size-6 fill-gray-800 opacity-0 transition group-data-[checked]:opacity-100" />
-                </div>
-              </Radio>
-            ))}
-          </RadioGroup>
+                </Radio>
+              ))}
+            </RadioGroup>
+          </div>
+          <button
+            className="text-white mt-5 bg-black text-xl py-6 rounded-xl"
+            onClick={() => {
+              setDone(true);
+            }}
+          >
+            Submit!
+          </button>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  if (done === true) {
+    return (
+      <div>
+        <div>{`Your carbon footprint is: ${csum.toFixed(2)}`}</div>
+      </div>
+    );
+  }
 };
 
 export default Calculation;

@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Calculation from "./pages/Calculation";
-import Result from "./pages/Result";
 
 const router = createBrowserRouter([
   {
@@ -12,10 +11,6 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <Calculation />,
-  },
-  {
-    path: "/result",
-    element: <Result />,
   },
 ]);
 
