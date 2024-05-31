@@ -1,12 +1,17 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
-import Navbar from "../components/Navbar";
+import { Chart as ChartJS } from "chart.js";
+import { Bar } from "react-chartjs-2";
+import "chart.js/auto";
+import Footer from "../components/Footer";
+import Support from "../components/Support";
 
 const Calculation: React.FC = () => {
   const { scrollYProgress } = useScroll();
+  const ref = useRef();
   const [done, setDone] = useState<boolean>(false);
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -106,9 +111,33 @@ const Calculation: React.FC = () => {
       selected8.footprint,
   );
 
+  const data = {
+    labels: ["UK", "US", "You", "World"],
+    datasets: [
+      {
+        label: "Carbon footprint",
+        data: [6.7, 18.3, csum.toFixed(2), 4.9],
+        borderRadius: 5,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+        ],
+        borderColor: [
+          "rgb(255, 99, 132)",
+          "rgb(75, 192, 192)",
+          "rgb(153, 102, 255)",
+          "rgb(54, 162, 235)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   if (done === false) {
     return (
-      <div className="py-12 w-screen px-3">
+      <div className="py-12 w-screen px-3 bg-gray-50">
         <motion.div
           className="z-100 fixed top-0 left-0 right-0 h-[10px] m-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 origin-left"
           style={{ scaleX }}
@@ -365,7 +394,7 @@ const Calculation: React.FC = () => {
   }
   if (done === true) {
     return (
-      <div className="py-12 w-screen px-3">
+      <div className="pt-10 w-screen px-3 bg-gray-50">
         <div className="flex flex-col max-w-2xl mx-auto">
           <p className="font-semibold">
             <button
@@ -380,12 +409,19 @@ const Calculation: React.FC = () => {
             <p>{`Your carbon footprint is ${csum.toFixed(2)} tons of CO₂`}</p>
             <p>{`Here's what that means!`}</p>
           </div>
-          <img
-            src="https://projectwren.imgix.net/earth-incomplete-puzzle-clean.png?auto=format%2Ccompress&q=35"
-            alt="globe"
-            className="size-48 mx-auto mt-12"
-          />
+          <h1 className="font-semibold text-2xl my-10">
+            Your carbon footprint amongs other country average.
+          </h1>
+          <Bar ref={ref} data={data} />
+          <a
+            href="https://www.ucsusa.org/"
+            className="bg-nature mt-12 mb-10 py-4 w-48 text-center mx-auto text-white font-semibold rounded-lg"
+          >
+            Save the earth
+          </a>
         </div>
+        <Support />
+        <Footer />
       </div>
     );
   }

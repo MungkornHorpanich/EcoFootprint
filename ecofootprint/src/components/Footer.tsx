@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <div className="w-full bg-[#f1f2f1] flex py-4">
+    <div className="w-screen bg-[#f1f2f1] flex py-4">
       <div className="max-w-2xl mx-auto text-center">
         <h1>
           👋 Made by{" "}
