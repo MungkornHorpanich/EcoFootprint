@@ -14,13 +14,11 @@ const Video: React.FC = () => {
           </p>
           <div className="flex">
             <div className="flex gap-5 mx-auto">
-              <h1 className="text-6xl animate-bounce drop-shadow-lg">👉</h1>
               <Link to={"/test"}>
                 <button className="px-7 flex font-semibold text-white rounded-xl bg-nature text-xl py-4">
                   Start The Test
                 </button>
               </Link>
-              <h1 className="text-6xl animate-bounce drop-shadow-lg">👈</h1>
             </div>
           </div>
         </div>

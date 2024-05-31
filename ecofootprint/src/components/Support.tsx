@@ -12,9 +12,11 @@ const Support: React.FC = () => {
         </p>
         <div className="mx-3 mt-3 flex flex-col md:gap-2 md:flex-row">
           <div className="mx-auto flex items-center md:mx-0 justify-center">
-            <a href="https://www.buymeacoffee.com/whiledev">
-              <img src="https://img.buymeacoffee.com/button-api/?text=Buy me some milk&emoji=🥛&slug=whiledev&button_colour=5F7FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" />
-            </a>
+            <span>
+              <a href="https://www.buymeacoffee.com/whiledev">
+                <img src="https://img.buymeacoffee.com/button-api/?text=Buy me some milk&emoji=🥛&slug=whiledev&button_colour=5F7FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" />
+              </a>
+            </span>
           </div>
           <a>
             <button className="bg-black mx-auto md:mt-0 mt-2 flex gap-2 text-white rounded-lg py-3 px-3 font-semibold">
