@@ -142,9 +142,6 @@ const Calculation: React.FC = () => {
           className="z-100 fixed top-0 left-0 right-0 h-[10px] m-2 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 origin-left"
           style={{ scaleX }}
         />
-        <div className="fixed right-0 bottom-0 m-5">{`Your carbon footprint: ${csum.toFixed(
-          2,
-        )}`}</div>
         <div className="flex flex-col max-w-2xl gap-24 mx-auto mt-12">
           <div id="heading">
             <h1 className="font-bold text-3xl">
