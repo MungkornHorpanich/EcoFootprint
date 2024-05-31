@@ -3,7 +3,6 @@ import { Radio, RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
-import { Chart as ChartJS } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import Footer from "../components/Footer";
@@ -352,7 +351,7 @@ const Calculation: React.FC = () => {
 
           <div id="q8">
             <h1 className="font-bold text-2xl">
-              7) How much water do you use? 💧
+              8) How much water do you use? 💧
             </h1>
             <RadioGroup
               by="name"
